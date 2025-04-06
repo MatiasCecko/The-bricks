@@ -329,6 +329,31 @@ function drawIt() {
       start2();
     }
   }
+  $("#resetBestScore").click(function () {
+    // Stop the game
+    clearInterval(intTimer);
+    clearInterval(intervalId);
+    start = false;
+    paused = true;
+    
+    // Reset best score
+    bestScore = 0;
+    localStorage.setItem('bestScore', bestScore);
+    $("#bestScore").html(bestScore);
+    
+    swal({
+      title: 'Poenostavljen rezultat!',
+      text: 'Rezultat: ' + tocke,
+      icon: 'warning',
+      button: {
+        text: 'OK',
+        className: 'swal-button-gameover',
+      }
+    }).then(() => {
+      reset(); // Reset the game after clicking OK
+    });
+});
+
   $("#startBtn").click(function () {
     if (!intervalId) {
       init(); // Initialize the game if not running
