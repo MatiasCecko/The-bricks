@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="shortcut icon" type="x-icon" href="slike/icon.png">
+</head>
+
+<body onload="drawIt()">
+    <div class="all">
+        <canvas id="canvas" width="800" height="800"></canvas>
+    </div>
+    <p>Čas: <mark id="cas">00:00</mark></p>
+    <p>Točke: <mark id="tocke">0</mark></p>
+    <p>Najboljši rezultat: <mark id="bestScore">0</mark></p>
+    <script src="js/script.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
+    <div id="game-controls">
+        <button id="startBtn">Start</button>
+        <button id="pauseBtn">Pavza</button>
+        <button id="finishBtn">Končaj</button>
+      </div>
+      
+</body>
+</html>
