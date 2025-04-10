@@ -140,3 +140,33 @@ mark {
   transform: scale(0.95);
   background-color: #888;
 }
+
+.score-popup {
+  position: absolute;
+  font-size: 24px;
+  font-weight: bold;
+  text-shadow: 0 0 6px #000;
+  opacity: 1;
+  transform: translateY(0);
+  animation: popAndFade 1s ease-out forwards;
+  z-index: 1000;
+  pointer-events: none;
+}
+
+@keyframes popAndFade {
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+    scale: 1;
+  }
+
+  30% {
+    scale: 1.3;
+  }
+
+  100% {
+    transform: translateY(-60px);
+    opacity: 0;
+    scale: 1;
+  }
+}

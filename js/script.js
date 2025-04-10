@@ -4,6 +4,29 @@ function drawIt() {
   var dx;
   var dx;
   var dy;
+  var ballAngle = 0;
+  var r = 15;
+  var scorePopups = [];
+
+  function drawScorePopups() {
+    const now = Date.now();
+    scorePopups = scorePopups.filter(p => now - p.time < 600);
+
+    for (const popup of scorePopups) {
+      const elapsed = now - popup.time;
+      const opacity = 1 - elapsed / 600;
+      const yOffset = -elapsed / 15;
+
+      ctx.save();
+      ctx.globalAlpha = opacity;
+      ctx.fillStyle = "black";
+      ctx.font = "bold 16px Arial";
+      ctx.fillText("+" + popup.points, popup.x, popup.y + yOffset);
+      ctx.restore();
+    }
+  }
+
+
 
   function setBallSpeed() {
     const level = $("#difficulty").val();
@@ -22,7 +45,7 @@ function drawIt() {
   var dy;
   var WIDTH;
   var HEIGHT;
-  var r = 10;
+  var r = 16;
   var ctx;
   var paused;
   var bestScore = 0;
@@ -88,7 +111,14 @@ function drawIt() {
   function draw() {
     clear();
     ctx.fillStyle = ballcolor;
-    circle(x, y, 15);
+    ctx.save();
+    ctx.translate(x, y);
+    ctx.rotate(-ballAngle);
+    ctx.drawImage(ballImg, -r, -r, r * 2, r * 2);
+    ctx.restore();
+
+    ballAngle += 0.1;
+
 
     //premik ploščice levo in desno
     if (rightDown && paddlex + paddlew + 5 <= WIDTH)
@@ -151,8 +181,12 @@ function drawIt() {
       bricks[row][col] = 0;
       tocke += 1;
       $("#tocke").html(tocke);
-      checkWin();
 
+      // Get canvas position on screen
+      const canvasOffset = $("#canvas").offset();
+      scorePopus(canvasOffset.left + x, canvasOffset.top + y, "+1");
+
+      checkWin();
     }
   }
   init_paddle();
@@ -226,6 +260,26 @@ function drawIt() {
     }
   }
   var tocke;
+  function scorePopus(x, y, value = "+1") {
+    const $pop = $(`<div class="score-popup">${value}</div>`);
+    $("body").append($pop);
+    $pop.css({
+      position: "absolute",
+      left: x + "px",
+      top: y + "px",
+      color: "#000",
+      fontSize: "20px",
+      fontWeight: "bold",
+      zIndex: 9999,
+      pointerEvents: "none",
+    }).animate({
+      top: y - 50 + "px",
+      opacity: 0
+    }, 1000, function () {
+      $pop.remove();
+    });
+  }
+
   function reset() {
     x = 150;
     y = 150;
