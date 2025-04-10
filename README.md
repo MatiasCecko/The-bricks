@@ -7,12 +7,7 @@ Za svojo projektno nalogo sem se odločil oblikovati labirint, ki predstavlja me
 ![image](https://github.com/user-attachments/assets/d54f3cb5-a30c-4099-be3f-523402a43e92)
 
 <h1>Funkcije</h1>
-Možnosti:
--Začetek igre <hr>
--Pavza igre
--Končanje igre
--Ponastavitev najboljšega rezultata
--Izbira težavnosti igre
+Možnosti: Začetek igre, Pavza igre, Končanje igre, Ponastavitev najboljšega rezultata, Izbira težavnosti igre
 
 ![image](https://github.com/user-attachments/assets/0a3d6af7-0de5-4a03-854a-eb4c2483685e)
 ![image](https://github.com/user-attachments/assets/77b5586d-962c-4268-a149-eba8c2599358)
