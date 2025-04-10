@@ -5,13 +5,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/style.css">
-    <link rel="shortcut icon" type="x-icon" href="slike/icon.png">
-    <title>The bricks</title>
+    <link rel="shortcut icon" type="x-icon" href="slike/TROPHY.png">
+    <title>UEFA Champions League</title>
 </head>
 
 <body onload="drawIt()">
+    <img src="slike/logo.png" alt="Logo" class="logo-fixed">
     <div class="all">
-        <canvas id="canvas" width="800" height="800"></canvas>
+        <canvas id="canvas" width="800" height="800">
+
+
+        </canvas>
     </div>
     <p>Čas: <mark id="cas">00:00</mark></p>
     <p>Točke: <mark id="tocke">0</mark></p>
@@ -24,7 +28,14 @@
         <button id="pauseBtn">Pavza</button>
         <button id="finishBtn">Končaj</button>
         <button id="resetBestScore">Poenostavi najboljši rezultat</button>
-      </div>
-      
+        <select id="difficulty">
+            <option value="easy">Lahko</option>
+            <option value="medium" selected>Srednje težko</option>
+            <option value="hard">Težko</option>
+        </select>
+
+    </div>
+
 </body>
+
 </html>

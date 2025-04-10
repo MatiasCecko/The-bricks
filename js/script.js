@@ -1,57 +1,25 @@
 function drawIt() {
-  var drawPolygon = function (ctx, pts, radius) {
-    if (radius > 0) {
-      pts = getRoundedPoints(pts, radius);
-    }
-    var i, pt, len = pts.length;
-    for (i = 0; i < len; i++) {
-      pt = pts[i];
-      if (i == 0) {
-        ctx.beginPath();
-        ctx.moveTo(pt[0], pt[1]);
-      } else {
-        ctx.lineTo(pt[0], pt[1]);
-      }
-      if (radius > 0) {
-        ctx.quadraticCurveTo(pt[2], pt[3], pt[4], pt[5]);
-      }
-    }
-    ctx.closePath();
-  };
+  var x;
+  var y;
+  var dx;
+  var dx;
+  var dy;
 
-  var getRoundedPoints = function (pts, radius) {
-    var i1, i2, i3, p1, p2, p3, prevPt, nextPt,
-      len = pts.length,
-      res = new Array(len);
-    for (i2 = 0; i2 < len; i2++) {
-      i1 = i2 - 1;
-      i3 = i2 + 1;
-      if (i1 < 0) {
-        i1 = len - 1;
-      }
-      if (i3 == len) {
-        i3 = 0;
-      }
-      p1 = pts[i1];
-      p2 = pts[i2];
-      p3 = pts[i3];
-      prevPt = getRoundedPoint(p1[0], p1[1], p2[0], p2[1], radius, false);
-      nextPt = getRoundedPoint(p2[0], p2[1], p3[0], p3[1], radius, true);
-      res[i2] = [prevPt[0], prevPt[1], p2[0], p2[1], nextPt[0], nextPt[1]];
+  function setBallSpeed() {
+    const level = $("#difficulty").val();
+    if (level === "easy") {
+      dx = 2;
+      dy = 3;
+    } else if (level === "medium") {
+      dx = 4;
+      dy = 6;
+    } else if (level === "hard") {
+      dx = 8;
+      dy = 10;
     }
-    return res;
-  };
+  }
 
-  var getRoundedPoint = function (x1, y1, x2, y2, radius, first) {
-    var total = Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2)),
-      idx = first ? radius / total : (total - radius) / total;
-    return [x1 + (idx * (x2 - x1)), y1 + (idx * (y2 - y1))];
-  };
-
-  var x = 150;
-  var y = 150;
-  var dx = 2;
-  var dy = 4;
+  var dy;
   var WIDTH;
   var HEIGHT;
   var r = 10;
@@ -63,6 +31,9 @@ function drawIt() {
     ctx = $('#canvas')[0].getContext("2d");
     WIDTH = $("#canvas").width();
     HEIGHT = $("#canvas").height();
+    setBallSpeed();
+    x = HEIGHT / 2;
+    y = WIDTH - 35;
     sekunde = 0;
     izpisTimer = "00:00";
     tocke = 0;
@@ -75,14 +46,12 @@ function drawIt() {
 
   function start2() {
     intTimer = setInterval(timer, 1000);
-    intervalId = setInterval(draw, 0.1);
+    intervalId = setInterval(draw, 10);
   }
-
+  var ballImg = new Image();
+  ballImg.src = "slike/ball.png";
   function circle(x, y, r) {
-    ctx.beginPath();
-    ctx.arc(x, y, r, 0, Math.PI * 2, true);
-    ctx.closePath();
-    ctx.fill();
+    ctx.drawImage(ballImg, x - r, y - r, r * 2, r * 2)
   }
 
   function rect(x, y, w, h) {
@@ -108,7 +77,7 @@ function drawIt() {
 
   function init_paddle() {
     paddlew = 110;
-    paddlex = WIDTH / 2;
+    paddlex = WIDTH / 2 - 43;
     paddleh = 10;
 
   }
@@ -120,7 +89,7 @@ function drawIt() {
   function draw() {
     clear();
     ctx.fillStyle = ballcolor;
-    circle(x, y, 10);
+    circle(x, y, 15);
 
     //premik ploščice levo in desno
     if (rightDown && paddlex + paddlew + 5 <= WIDTH)
@@ -151,6 +120,8 @@ function drawIt() {
     x += dx;
     y += dy;
 
+    var TROPHY = new Image();
+    TROPHY.src = "slike/TROPHY.png";
     //riši opeke
     for (i = 0; i < NROWS; i++) {
       ctx.fillStyle = rowcolors[i]; //barvanje vrstic
@@ -164,8 +135,8 @@ function drawIt() {
             [x + BRICKWIDTH, y + BRICKHEIGHT],
             [x, y + BRICKHEIGHT]
           ];
-          drawPolygon(ctx, poly, 5); // You can adjust the radius (5 here)
-          ctx.fill();
+          ctx.drawImage(TROPHY, (j * (BRICKWIDTH + PADDING)) + PADDING,
+            (i * (BRICKHEIGHT + PADDING)) + PADDING, BRICKWIDTH, BRICKHEIGHT);
 
         }
       }
@@ -216,10 +187,10 @@ function drawIt() {
   var PADDING;
 
   function initbricks() { //inicializacija opek - polnjenje v tabelo
-    NROWS = 5;
-    NCOLS = 5;
+    NROWS = 2;
+    NCOLS = 6;
     BRICKWIDTH = (WIDTH / NCOLS) - 1;
-    BRICKHEIGHT = 15;
+    BRICKHEIGHT = 150;
     PADDING = 1;
     bricks = new Array(NROWS);
     for (i = 0; i < NROWS; i++) {
@@ -335,12 +306,12 @@ function drawIt() {
     clearInterval(intervalId);
     start = false;
     paused = true;
-    
+
     // Reset best score
     bestScore = 0;
     localStorage.setItem('bestScore', bestScore);
     $("#bestScore").html(bestScore);
-    
+
     swal({
       title: 'Poenostavljen rezultat!',
       text: 'Rezultat: ' + tocke,
@@ -352,7 +323,7 @@ function drawIt() {
     }).then(() => {
       reset(); // Reset the game after clicking OK
     });
-});
+  });
 
   $("#startBtn").click(function () {
     if (!intervalId) {
