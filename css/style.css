@@ -115,8 +115,10 @@ mark {
   width: 200px;
   height: auto;
   z-index: 999;
-  pointer-events: none; /* So it doesn't block clicks */
+  pointer-events: none;
+  /* So it doesn't block clicks */
 }
+
 #difficulty {
   background-color: #444;
   color: #fff;

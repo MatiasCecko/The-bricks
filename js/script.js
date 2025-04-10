@@ -33,7 +33,7 @@ function drawIt() {
     HEIGHT = $("#canvas").height();
     setBallSpeed();
     x = HEIGHT / 2;
-    y = WIDTH - 35;
+    y = WIDTH - 15;
     sekunde = 0;
     izpisTimer = "00:00";
     tocke = 0;
@@ -77,9 +77,8 @@ function drawIt() {
 
   function init_paddle() {
     paddlew = 110;
-    paddlex = WIDTH / 2 - 43;
+    paddlex = WIDTH / 2 - paddlew / 2;  // This centers the paddle properly
     paddleh = 10;
-
   }
   var rowheight;
   var colwidth;
@@ -260,10 +259,13 @@ function drawIt() {
   function checkWin() {
     for (let i = 0; i < NROWS; i++) {
       for (let j = 0; j < NCOLS; j++) {
-        if (bricks[i][j] === 1) return; // At least one brick remains
+        if (bricks[i][j] === 1) return; // Exit if any brick remains
       }
     }
-    game_win();
+    // Add delay before showing win message
+    setTimeout(() => {
+      game_win();
+    }, 10); // 500ms = 0.5s delay
   }
 
   function game_win() {
