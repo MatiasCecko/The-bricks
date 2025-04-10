@@ -6,9 +6,9 @@ Za svojo projektno nalogo sem se odločil oblikovati labirint, ki predstavlja me
 
 ![image](https://github.com/user-attachments/assets/d54f3cb5-a30c-4099-be3f-523402a43e92)
 
-<h1>funkcije</h1>
+<h1>Funkcije</h1>
 Možnosti:
--Začetek igre
+-Začetek igre <hr>
 -Pavza igre
 -Končanje igre
 -Ponastavitev najboljšega rezultata
