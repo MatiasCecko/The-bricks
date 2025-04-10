@@ -1,6 +1,6 @@
 <h1>Projektna naloga 4 - HTML5 ("The bricks" )</h1>
 
-Za svojo projektno nalogo sem se odločil oblikovati labirint, ki predstavlja mesto brez elektrike. Ko se pot labirinta uspešno zaključi, se mesto osvetli in pridobi elektriko.
+Igrica the bricks na temo UEFA Lige prvakov.
 
 <h1>SLIKE</h1>
 
