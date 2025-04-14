@@ -14,7 +14,5 @@ Možnosti: Začetek igre, Pavza igre, Končanje igre, Ponastavitev najboljšega 
 
 <h1>Sweetalerti</h1>
 
-![image](https://github.com/user-attachments/assets/241c8577-e6c2-4b92-ac1b-8a9b2078aa9b)
-![image](https://github.com/user-attachments/assets/d5360378-66f2-428d-95c2-313dda3f9d06)
-![image](https://github.com/user-attachments/assets/e4872def-16e0-4734-808b-2c33202e7075)
-![image](https://github.com/user-attachments/assets/0104e2e9-477a-4ccf-93d1-c30d743a2688)
+
+![sweetalerti](https://github.com/user-attachments/assets/1be72364-db97-4efb-8a71-2d114c845d73)
