@@ -10,7 +10,7 @@ Igrica the bricks na temo UEFA Lige prvakov.
 Možnosti: Začetek igre, Pavza igre, Končanje igre, Ponastavitev najboljšega rezultata, Izbira težavnosti igre <hr>
 
 ![image](https://github.com/user-attachments/assets/0a3d6af7-0de5-4a03-854a-eb4c2483685e)
-![image](https://github.com/user-attachments/assets/77b5586d-962c-4268-a149-eba8c2599358)
+![image](https://github.com/user-attachments/assets/7f71552e-b77c-416e-a115-0cd32aa4daf5)
 
 <h1>Sweetalerti</h1>
 
