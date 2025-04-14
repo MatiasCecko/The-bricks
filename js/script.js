@@ -194,7 +194,7 @@ function drawIt() {
     swal({
       title: 'Zgubil si!',
       text: 'Rezultat: ' + tocke,
-      icon: 'warning',
+      icon: 'slike/sui.png',
       button: {
         text: 'OK',
         className: 'swal-button-gameover',
@@ -230,7 +230,7 @@ function drawIt() {
     swal({
       title: 'Zmagal si!',
       text: 'Čestitke! Rezultat: ' + tocke,
-      icon: 'warning',
+      icon: 'slike/sui.png',
       button: {
         text: 'OK',
         className: 'swal-button-gameover',
@@ -309,7 +309,7 @@ function drawIt() {
     swal({
       title: 'Najboljši rezultat je bil ponastavljen!',
       text: 'Tvoj rezultat: ' + tocke,
-      icon: 'warning',
+      icon: 'slike/sui.png',
       button: {
         text: 'OK',
         className: 'swal-button-gameover',
@@ -342,7 +342,7 @@ function drawIt() {
     swal({
       title: 'Igra je končana!',
       text: 'Rezultat: ' + tocke,
-      icon: 'warning',
+      icon: 'slike/sui.png',
       button: {
         text: 'OK',
         className: 'swal-button-gameover',
