@@ -168,7 +168,7 @@ function drawIt() {
       position: "absolute",
       left: x + "px",
       top: y + "px",
-      color: "#000",
+      color: "#fff",
       fontSize: "20px",
       fontWeight: "bold",
       zIndex: 9999,
