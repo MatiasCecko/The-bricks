@@ -86,7 +86,7 @@ function drawIt() {
 
       ctx.save();
       ctx.globalAlpha = opacity;
-      ctx.fillStyle = "black";
+      ctx.fillStyle = "white";
       ctx.font = "bold 16px Arial";
       ctx.fillText("+" + popup.points, popup.x, popup.y + yOffset);
       ctx.restore();
