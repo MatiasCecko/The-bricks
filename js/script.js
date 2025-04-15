@@ -12,6 +12,7 @@ function drawIt() {
   const paddlecolor = "#fff", ballcolor = "#ff0";
   const ballImg = new Image(); ballImg.src = "slike/ball.png";
   const TROPHY = new Image(); TROPHY.src = "slike/TROPHY.png";
+  const paddleImg = new Image(); paddleImg.src = "slike/bicyclekick.png";
   let scorePopups = [];
 
 
@@ -40,9 +41,9 @@ function drawIt() {
 
 
   function init_paddle() {
-    paddlew = 110;
+    paddlew = 150;
     paddlex = WIDTH / 2 - paddlew / 2;
-    paddleh = 10;
+    paddleh = 120;
   }
 
   //Težavnost igre
@@ -109,7 +110,7 @@ function drawIt() {
     else if (leftDown && paddlex - 5 >= 0) paddlex -= 5;
 
     ctx.fillStyle = paddlecolor;
-    rect(paddlex, HEIGHT - paddleh, paddlew, paddleh);
+    ctx.drawImage(paddleImg, paddlex, HEIGHT - paddleh, paddlew, paddleh);
 
     //Žogica
     if (x + dx > WIDTH - r || x + dx < r) dx = -dx;
@@ -317,11 +318,6 @@ function drawIt() {
     }).then(function () {
       window.location.reload();
     })
-  });
-
-
-  $("#startBtn").click(function () {
-    if (!intervalId) init();
   });
 
   $("#pauseBtn").click(function () {
