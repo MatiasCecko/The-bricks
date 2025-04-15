@@ -8,7 +8,6 @@
 body {
   background-image: url('../slike/background.jpg');
   background-size: cover;
-  /* or "contain" depending on fit */
   background-position: center;
   background-repeat: no-repeat;
   background-color: #222;
@@ -48,7 +47,7 @@ mark {
   border-radius: 4px;
 }
 
-/* Make the exclamation icon and its border grey */
+
 .swal-icon--warning {
   border-color: grey !important;
 }
@@ -61,13 +60,12 @@ mark {
   background-color: grey !important;
 }
 
-/* Center the OK button */
+
 .swal-footer {
   display: flex;
   justify-content: center;
 }
 
-/* Your existing button style */
 .swal-button-gameover {
   background: #9EC23C;
   color: black;
@@ -75,7 +73,6 @@ mark {
   font-weight: bold;
 }
 
-/* Hover effect for OK button */
 .swal-button-gameover:hover {
   background: grey !important;
   color: white !important;
@@ -109,16 +106,6 @@ mark {
   background-color: #888;
 }
 
-.logo-fixed {
-  position: fixed;
-  top: 40px;
-  left: 100px;
-  width: 200px;
-  height: auto;
-  z-index: 999;
-  pointer-events: none;
-  /* So it doesn't block clicks */
-}
 
 #difficulty {
   background-color: #444;
@@ -141,6 +128,18 @@ mark {
   transform: scale(0.95);
   background-color: #888;
 }
+
+.logo-fixed {
+  position: fixed;
+  top: 40px;
+  left: 100px;
+  width: 200px;
+  height: auto;
+  z-index: 999;
+  pointer-events: none;
+
+}
+
 
 .score-popup {
   position: absolute;

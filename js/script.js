@@ -1,5 +1,4 @@
 function drawIt() {
-  // ==== Global Variables ====
   let x, y, dx, dy, ballAngle = 0;
   let WIDTH, HEIGHT, r = 15;
   let ctx, paused = false, start = true;
@@ -15,7 +14,7 @@ function drawIt() {
   const TROPHY = new Image(); TROPHY.src = "slike/TROPHY.png";
   let scorePopups = [];
 
-  // ==== Initialization ====
+
   function init() {
     ctx = $('#canvas')[0].getContext("2d");
     WIDTH = $("#canvas").width();
@@ -39,14 +38,14 @@ function drawIt() {
     intervalId = setInterval(draw, 10);
   }
 
-  // ==== Paddle ====
+
   function init_paddle() {
     paddlew = 110;
     paddlex = WIDTH / 2 - paddlew / 2;
     paddleh = 10;
   }
 
-  // ==== Ball Speed ====
+  //Težavnost igre
   function setBallSpeed() {
     const level = $("#difficulty").val();
     if (level === "easy") [dx, dy] = [2, 3];
@@ -54,9 +53,9 @@ function drawIt() {
     else if (level === "hard") [dx, dy] = [8, 10];
   }
 
-  // ==== Bricks ====
+
   function initbricks() {
-    NROWS = 2;
+    NROWS = 3;
     NCOLS = 6;
     BRICKWIDTH = (WIDTH / NCOLS) - 1;
     BRICKHEIGHT = 150;
@@ -64,7 +63,7 @@ function drawIt() {
     bricks = Array.from({ length: NROWS }, () => Array(NCOLS).fill(1));
   }
 
-  // ==== Drawing Functions ====
+
   function clear() {
     ctx.clearRect(0, 0, WIDTH, HEIGHT);
   }
@@ -105,14 +104,14 @@ function drawIt() {
     ctx.restore();
     ballAngle += 0.1;
 
-    // Paddle movement
+    //Paddle
     if (rightDown && paddlex + paddlew + 5 <= WIDTH) paddlex += 5;
     else if (leftDown && paddlex - 5 >= 0) paddlex -= 5;
 
     ctx.fillStyle = paddlecolor;
     rect(paddlex, HEIGHT - paddleh, paddlew, paddleh);
 
-    // Ball movement
+    //Žogica
     if (x + dx > WIDTH - r || x + dx < r) dx = -dx;
     if (y + dy < r) dy = -dy;
     else if (y + dy > HEIGHT - r) {
@@ -129,7 +128,7 @@ function drawIt() {
     x += dx;
     y += dy;
 
-    // Draw bricks
+    //Nariši brickse
     for (let i = 0; i < NROWS; i++) {
       ctx.fillStyle = rowcolors[i];
       for (let j = 0; j < NCOLS; j++) {
@@ -141,7 +140,7 @@ function drawIt() {
       }
     }
 
-    // Brick collision
+
     const rowheight = BRICKHEIGHT + PADDING;
     const colwidth = BRICKWIDTH + PADDING;
     const row = Math.floor(y / rowheight);
@@ -151,6 +150,7 @@ function drawIt() {
       dy = -dy;
       bricks[row][col] = 0;
       tocke++;
+      playBrickHitSound();
       $("#tocke").html(tocke);
       const canvasOffset = $("#canvas").offset();
       scorePopus(canvasOffset.left + x, canvasOffset.top + y, "+1");
@@ -160,7 +160,7 @@ function drawIt() {
     drawScorePopups();
   }
 
-  // ==== Score Popups ====
+  //+1 animation
   function scorePopus(x, y, value = "+1") {
     const $pop = $(`<div class="score-popup">${value}</div>`);
     $("body").append($pop);
@@ -179,7 +179,7 @@ function drawIt() {
     }, 1000, () => $pop.remove());
   }
 
-  // ==== Game State ====
+  //Končana igra
   function game_over() {
     start = false;
     clearInterval(intTimer);
@@ -230,7 +230,7 @@ function drawIt() {
     swal({
       title: 'Zmagal si!',
       text: 'Čestitke! Rezultat: ' + tocke,
-      icon: 'slike/sui.png',
+      icon: 'slike/TROPHY2.png',
       button: {
         text: 'OK',
         className: 'swal-button-gameover',
@@ -256,7 +256,7 @@ function drawIt() {
   }
 
 
-  // ==== Timer ====
+  //Timer
   function timer() {
     if (start) {
       sekunde++;
@@ -270,7 +270,7 @@ function drawIt() {
     }
   }
 
-  // ==== Pause ====
+  //Pavza
   function pavza() {
     if (paused) {
       clearInterval(intTimer);
@@ -280,7 +280,7 @@ function drawIt() {
     }
   }
 
-  // ==== Event Listeners ====
+  //Vključevanje tipkovnice
   $(document).keydown(function (evt) {
     if (evt.keyCode === 39) rightDown = true;
     else if (evt.keyCode === 37) leftDown = true;
@@ -295,7 +295,7 @@ function drawIt() {
     else if (evt.keyCode === 37) leftDown = false;
   });
 
-  // ==== Button Handlers ====
+  //Buttons
   $("#resetBestScore").click(function () {
     clearInterval(intTimer);
     clearInterval(intervalId);
@@ -354,6 +354,9 @@ function drawIt() {
 
 
   $("#startBtn").click(function () {
+    const sound = document.getElementById('startSound');
+    sound.volume = 0.2; // VOLUMEN HIMNE
+    sound.play().catch(e => console.log("Autoplay blocked:", e));
     if (intervalId) {
       clearInterval(intervalId);
       intervalId = null;
@@ -366,7 +369,15 @@ function drawIt() {
     sekunde = 0;
     izpisTimer = "00:00";
     $("#cas").html(izpisTimer);
-    init(); // Start the game
+    init(); // Začni igro
   });
+  //ko zadane birck naredi sound
+  function playBrickHitSound() {
+    const sound = document.getElementById("hitSound");
+    sound.currentTime = 0;
+    hitSound.volume = 0.2;
+    sound.play().catch(e => console.log("Sound blocked:", e));
+  }
+
 
 }
