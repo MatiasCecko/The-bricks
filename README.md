@@ -4,7 +4,8 @@ Igrica the bricks na temo UEFA Lige prvakov.
 
 <h1>SLIKE</h1>
 
-![image](https://github.com/user-attachments/assets/7a1ca0a9-71f8-4a06-9c4e-79d1694b7b66)
+![image](https://github.com/user-attachments/assets/721b3d62-e90d-405b-9869-79e2a39cbfc4)
+
 
 <h1>Funkcije</h1>
 Možnosti: Začetek igre, Pavza igre, Končanje igre, Ponastavitev najboljšega rezultata, Izbira težavnosti igre <hr>
