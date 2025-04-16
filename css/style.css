@@ -7,6 +7,7 @@
 
 body {
   background-image: url('../slike/background.jpg');
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../slike/background.jpg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -41,7 +42,7 @@ p {
 }
 
 mark {
-  background-color: #444;
+  background-color: #18489A;
   color: #fff;
   padding: 2px 6px;
   border-radius: 4px;
@@ -85,8 +86,9 @@ mark {
 }
 
 #game-controls button {
-  background-color: #444;
-  color: #fff;
+  background-color: #fff;
+  font-weight: bold;
+  color: #18489A;
   border: none;
   padding: 12px 24px;
   margin: 10px;
@@ -98,18 +100,16 @@ mark {
 }
 
 #game-controls button:hover {
-  background-color: #666;
+  background-color: #18489A;
+  color: #fff;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+  transform: translateY(-2px);
 }
-
-#game-controls button:active {
-  transform: scale(0.95);
-  background-color: #888;
-}
-
 
 #difficulty {
-  background-color: #444;
-  color: #fff;
+  background-color: #fff;
+  font-weight: bold;
+  color: #18489A;
   border: none;
   padding: 12px 24px;
   margin: 10px;
@@ -121,12 +121,10 @@ mark {
 }
 
 #difficulty:hover {
-  background-color: #666;
-}
-
-#difficulty:active {
-  transform: scale(0.95);
-  background-color: #888;
+  background-color: #18489A;
+  color: #fff;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+  transform: translateY(-2px);
 }
 
 .logo-fixed {
