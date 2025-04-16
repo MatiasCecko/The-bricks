@@ -351,7 +351,7 @@ function drawIt() {
 
   $("#startBtn").click(function () {
     const sound = document.getElementById('startSound');
-    sound.volume = 0.2; // VOLUMEN HIMNE
+    sound.volume = 0.1; // VOLUMEN HIMNE
     sound.play().catch(e => console.log("Autoplay blocked:", e));
     if (intervalId) {
       clearInterval(intervalId);
@@ -371,7 +371,7 @@ function drawIt() {
   function playBrickHitSound() {
     const sound = document.getElementById("hitSound");
     sound.currentTime = 0;
-    hitSound.volume = 0.2;
+    hitSound.volume = 0.25;
     sound.play().catch(e => console.log("Sound blocked:", e));
   }
 
