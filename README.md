@@ -9,8 +9,9 @@ Igrica the bricks na temo UEFA Lige prvakov.
 <h1>Funkcije</h1>
 Možnosti: Začetek igre, Pavza igre, Končanje igre, Ponastavitev najboljšega rezultata, Izbira težavnosti igre <hr>
 
-![image](https://github.com/user-attachments/assets/0a3d6af7-0de5-4a03-854a-eb4c2483685e)
-![image](https://github.com/user-attachments/assets/7f71552e-b77c-416e-a115-0cd32aa4daf5)
+![image](https://github.com/user-attachments/assets/686e2b88-65ee-463c-b668-aa8caef1f165)
+
+![image](https://github.com/user-attachments/assets/123f1d49-bcef-4245-9e28-cb79f8f080ee)
 
 <h1>Sweetalerti</h1>
 
