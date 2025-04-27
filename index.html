@@ -2,43 +2,42 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="shortcut icon" type="x-icon" href="slike/TROPHY2.png">
-    <title>UEFA Champions League</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>UEFA Champions League Breakout</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="shortcut icon" type="image/x-icon" href="slike/TROPHY2.png">
 </head>
 
-<body onload="drawIt()">
-    <audio id="startSound" src="sounds/anthem.mp3" preload="auto"></audio>
-    <audio id="hitSound" src="sounds/sui.mp3" preload="auto"></audio>
+<body onload="environmentInit()">
+  <audio id="startSound" src="sounds/anthem.mp3" preload="auto"></audio>
+  <audio id="hitSound" src="sounds/sui.mp3" preload="auto"></audio>
 
-    <img src="slike/logo.png" alt="Logo" class="logo-fixed">
-    <div class="all">
-        <canvas id="canvas" width="800" height="800">
+  <img src="slike/logo.png" alt="Logo" class="logo-fixed">
 
+  <div class="all">
+    <canvas id="canvas" width="800" height="800"></canvas>
+  </div>
 
-        </canvas>
-    </div>
-    <p>Čas: <mark id="cas">00:00</mark></p>
-    <p>Točke: <mark id="tocke">0</mark></p>
-    <p>Najboljši rezultat: <mark id="bestScore">0</mark></p>
-    <script src="js/script.js"></script>
-    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
-    <div id="game-controls">
-        <button id="startBtn">Start</button>
-        <button id="pauseBtn">Pavza</button>
-        <button id="finishBtn">Končaj</button>
-        <button id="resetBestScore">Poenostavi najboljši rezultat</button>
-        <select id="difficulty">
-            <option value="easy">Lahko</option>
-            <option value="medium" selected>Srednje</option>
-            <option value="hard">Težko</option>
-        </select>
+  <p>Čas: <mark id="cas">00:00</mark></p>
+  <p>Točke: <mark id="tocke">0</mark></p>
+  <p>Najboljši rezultat: <mark id="bestScore">0</mark></p>
 
-    </div>
+  <div id="game-controls">
+    <button id="startBtn">Start</button>
+    <button id="pauseBtn">Pavza</button>
+    <button id="finishBtn">Končaj</button>
+    <button id="resetBestScore">Ponastavi najboljši rezultat</button>
+    <select id="difficulty">
+      <option value="easy">Lahko</option>
+      <option value="medium" selected>Srednje</option>
+      <option value="hard">Težko</option>
+    </select>
+  </div>
 
+  <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  <script src="js/script.js"></script>
 </body>
 
 </html>
