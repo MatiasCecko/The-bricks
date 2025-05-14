@@ -157,17 +157,36 @@ function draw() {
 
 
   if (x + dx > WIDTH - r || x + dx < r) dx = -dx;
-  if (y + dy < r) dy = -dy;
-  else if (y + dy > HEIGHT - r) {
+// top‐wall bounce
+if (y + dy < r) {
+  dy = -dy;
+}
+// paddle bounce
+// near top of your file (so it’s easy to tweak):
+const paddleSink = 55;  // how many px the ball should actually go INTO the paddle
 
-    if (x > paddlex && x < paddlex + paddlew) {
-      dx = 8 * ((x - (paddlex + paddlew / 2)) / paddlew);
-      dy = -dy;
-    } else {
-      gameOver();
-      return;
-    }
+// …then in draw(), replace your paddle-collision block with:
+
+// compute the real paddle top + sink
+const paddleTop     = HEIGHT - paddleh;
+const collisionY    = paddleTop + paddleSink;  
+
+// test when the *bottom* of the ball crosses that lowered line:
+if (y + dy > collisionY - r) {
+  if (x > paddlex && x < paddlex + paddlew) {
+    // snap *exactly* to that lowered line:
+    y = collisionY - r;
+
+    // reflect off at an angle:
+    dx = 8 * ((x - (paddlex + paddlew/2)) / paddlew);
+    dy = -dy;
+  } else if (y + dy > HEIGHT - r) {
+    gameOver();
+    return;
   }
+}
+
+
 
   x += dx;
   y += dy;
